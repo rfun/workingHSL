@@ -188,9 +188,9 @@ $connect = mysql_connect($_POST['databasehost'], $_POST['databaseusername'], $_P
 	  mysql_error() . "");
 
 //While loop checks if the table has been created or not. If created then good else keeps looping. 
-//while(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'moss_users'"))!=1) 
-//{
-//}
+while(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'moss_users'"))!=1) 
+{
+}
 
 $sql ="INSERT INTO `moss_users`(`firstname`, `lastname`, `username`, `password`, `authority`) VALUES ('admin', 'admin', 'his_admin', PASSWORD('".$_POST['password']."'), 'admin')";
 

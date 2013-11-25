@@ -3,7 +3,7 @@
 	 $setup="yes";
 	 $worldWaterSetup="Yes"; //This parameter is only used for connecting to worldwater database and should only be run from within the server. 
 	 //To use world water server or your custom server : Enter the above option as Yes and then please configure the database settings below:
-	 $serverDBHost = 	"localhost:8080" ;//Your server Name : For example - "worldwater.byu.edu"
+	 $serverDBHost = 	"localhost" ;//Your server Name : For example - "worldwater.byu.edu"
 	 $serverDBUName = 	"root" ;//Your server Username : For example - "Adam"
 	 $serverDBPass = 	"" ;//Your server Password : For example - "*********"	 
 	 
@@ -51,13 +51,9 @@ $(document).ready(function() {
 	$("#dbSet3").show();
 	$("#dbSet2").show();	
 	}
-
-
-  });
+ });
 });
 
-
-  
 function show_answerDH(){
 alert("This may be either localhost or the server's IP address such as 8.23.154.5 if you are using a different server to host the database than the software.");
 }
@@ -502,8 +498,6 @@ $("form").submit(function(){
 var fal=0;
 //Iterate through each input field. 
 
-
-
 	$("#form1 input[type=text]").each(function() {
 		
 	if ((($(this).val())=="")&&(($(this).attr('name'))!="databasepassword"))
@@ -514,7 +508,7 @@ var fal=0;
 	
 	
 	$("#Database\\ Host").val("<?php echo $serverDBHost;?>");
-	$("#Database\\ User\\ Name").val("<?php echo $serverDBUname;?>");
+	$("#Database\\ User\\ Name").val("<?php echo $serverDBUName;?>");
 	$("#Database\\ Password").val("<?php echo $serverDBPass;?>");
 	
 	if ($(this).attr('name')=="databaseusername")
@@ -527,16 +521,12 @@ var fal=0;
 	}		
 	}
 	
-
-
-		$(this).focus();
+	$(this).focus();
 		//$(this).hide('slow',function(){$(this).show('slow');alert("Cannot Leave "+$(this).attr('id')+" Blank");});
 		$(this).hide('slow',function(){$(this).show('slow');alert(<?php echo "'".$CannotLeave."'";?> + " " +$(this).attr('id')+" " + <?php echo "'".$Blank."'";?>);});
 		fal=1;
-		return false;
-		
+		return false;	
 	}
-	
 	});
 
 if (fal==1)
@@ -583,22 +573,12 @@ $.post("db_check.php", $("#form1").serialize(),  function( data ) {
   alert(msg);
   //alert("Error in database configuration.Could Not Add the base tables.");
   alert(<?php echo "'".$ErrorDatabaseTables."'";?>);
-  
   return false;
   }
-  
-});  
-	  
+});    
   }
-  
 		      });
-
 //Database Check Completed. Now to run a script to insert the tables into the database. 
-
-
-
-
-
 	return false;
 });
 
