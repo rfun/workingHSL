@@ -20,7 +20,7 @@ if ($row = mysql_fetch_row( $export ))
 	}
 	else
 	{
-	$data="Unit:".$data;
+	$data="".$data;
 	}
 }
 else
